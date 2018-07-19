@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logo from 'assets/logo.svg';
+
 import homeAction from '../home/action';
 import action from './action';
+import InlineSVG from '../components/atoms/InlineSVG'
+
 import './style.scss';
 
 const propTypes = {
@@ -26,13 +28,16 @@ class User extends Component {
     return (
       <div className="user">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <InlineSVG source="./logo.svg" className="App-logo" />
           <Link to="/">
             <h1 className="App-title">
               Welcome to React
             </h1>
           </Link>
         </header>
+
+        <InlineSVG source="./app-cloud.svg" />
+
         <p className="App-intro">
           To get started, edit
           <code className="App-code">

@@ -107,7 +107,7 @@ const createConfig = (settings) => {
           'css-loader',
         ],
       }, {
-        test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
+        test: /\.(woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
         use: IS_PROD ? {
           loader: 'file-loader',
           options: {
@@ -117,7 +117,20 @@ const createConfig = (settings) => {
         } : {
           loader: 'url-loader',
         },
-      }],
+      },
+      {
+        test: /\.svg$/,
+        use : { 
+          loader: "svg-inline-loader",
+          options: {
+            removeTags: true,
+            removingTags: ['title', 'desc', 'defs', 'style'],
+            removeSVGTagAttrs: true,
+            removingTagAttrs: ['style', 'version', 'xmlns', 'xmlns:xlink', 'xml:space']
+          }
+        }
+      }
+    ],
     },
     plugins: [
       new webpack.DefinePlugin({
